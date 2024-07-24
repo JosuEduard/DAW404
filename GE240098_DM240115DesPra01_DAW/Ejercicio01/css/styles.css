@@ -1,0 +1,9 @@
+body{
+  display: grid;
+  place-items: center;
+}
+h1{
+  font-size: 2rem;
+  font-family: system-ui, -apple-system;
+  color: #09f;
+}

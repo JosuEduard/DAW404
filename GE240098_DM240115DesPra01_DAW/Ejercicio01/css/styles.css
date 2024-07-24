@@ -7,3 +7,8 @@ h1{
   font-family: system-ui, -apple-system;
   color: #09f;
 }
+img{
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}

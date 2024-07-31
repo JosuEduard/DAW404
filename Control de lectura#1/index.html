@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Impuesto de la renta</title>
+
+</head>
+
+<body>
+    <div id="centro">
+        <h1>Calcula tu retención de impuesto sobre la renta</h1>
+        <label for="salario">Ingrese su <b>salario mensual</b> (en dólares)</label>
+        <div class="input">
+            <input type="text" id="salario" placeholder="Ej. 500" required autocomplete="off" />
+        </div>
+        <div class="center">
+            <button id="calcular">Calcular</button>
+            <button id="limpiar">Limpiar</button>
+        </div>
+        <div class="deducciones">
+            <div class="input">
+                <label for="afp">Descuento de AFP</label>
+                <input type="text" disabled id="afp">
+            </div>
+            <div class="input">
+                <label for="isss">Descuento ISSS</label>
+                <input type="text" disabled id="isss">
+            </div>
+        </div>
+        <div class="input">
+            <label for="renta">Descuento del impuesto sobre la Renta</label>
+            <input type="text" id="renta" disabled>
+            <p id="explicacion"></p>
+        </div>
+        <div class="input">
+            <label for="sueldoFinal">Sueldo a recibir</label>
+            <input type="text" id="sueldoFinal" disabled>
+        </div>
+    </div>
+
+    <script src="js/funcionamiento.js"></script>
+</body>
+<footer>
+    <p>Created by Roberto Duarte (DM240115) and Josué García (GE240098).</p>
+    <p>Desarrollo de Aplicaciones Web con Software Interpretado en el Cliente (DAW404)</p>
+    <p>G02T </p>
+</footer>
+
+
+</html>

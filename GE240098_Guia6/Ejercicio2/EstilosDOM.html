@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Manejo de reglas de estilo con el DOM</title>
+  <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body class="container">
+  <header>
+    <h1>Documento de prueba CSS</h1>
+    <p>Esto es un párrafo de <strong>prueba</strong>.</p>
+    <p>Aquí viene más texto <em>engañoso</em>.</p>
+    <p>Hecho. No necesitamos <strong>seguir</strong> con esto</p>
+  </header>
+  <section>
+    <article>
+      <h3>Fin del documento de prueba</h3>
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <input type="button" class="btn btn-danger" value="Habilitar" id="enabled">
+        <input type="button" class="btn btn-warning" value="Deshabilitar" id="disabled">
+        <input type="button" class="btn btn-success" value="Modificar regla" id="change">
+        <input type="button" class="btn btn-info" value="Borrar regla" id="remove">
+        <input type="button" class="btn btn-secondary" value="Añadir regla" id="add">
+      </div>
+    </article>
+  </section>
+  <script src="js/estilosdom.js"></script>
+</body>
+
+</html>

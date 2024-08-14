@@ -1,33 +1,32 @@
 .formal {
-    background: #57758a;
-    color: #fff;
-    font-family: 'LeagueGothic-Regular', sans-serif;
-    font-size: 3.6em;
-    padding: 6px 9px;
-    text-align: center;
-    text-shadow: 0px -1px 0px #303030;
-  }
-  
-  .letterpress {
-    color: #222;
-    background: #414141;
-    font-family: 'Chunkfive', sans-serif;
-    font-size: 3.2em;
-    padding-right: 12px;
-    text-align: right;
-    text-shadow: 0px 2px 1px #555;
-  }
-  
-  .offset {
-    background: #e4e4c7;
-    /* Dejar suficiente espacio de relleno para acomodar la sombra */
-    padding: 16px 16px 25px 16px;
-    font-family: 'LeagueGothic-Regular', sans-serif;
-    font-size: 3.8em;
-    letter-spacing: 5px;
-    font-weight: bold;
-    color: #526972;
-    text-align: left;
-    text-shadow: 4px 4px 0px #e4e4c7, 6px 6px 0px #526972;
-  }
-  
+  background: #57758a;
+  color: #fff;
+  font-family: 'LeagueGothic-Regular', sans-serif;
+  font-size: 3.6em;
+  padding: 6px 9px;
+  text-align: center;
+  text-shadow: 0px -1px 0px #303030;
+}
+
+.letterpress {
+  color: #222;
+  background: #414141;
+  font-family: 'Chunkfive', sans-serif;
+  font-size: 3.2em;
+  padding-right: 12px;
+  text-align: right;
+  text-shadow: 0px 2px 1px #555;
+}
+
+.offset {
+  background: #e4e4c7;
+  /* Dejar suficiente espacio de relleno para acomodar la sombra */
+  padding: 16px 16px 25px 16px;
+  font-family: 'LeagueGothic-Regular', sans-serif;
+  font-size: 3.8em;
+  letter-spacing: 5px;
+  font-weight: bold;
+  color: #526972;
+  text-align: left;
+  text-shadow: 4px 4px 0px #e4e4c7, 6px 6px 0px #526972;
+}

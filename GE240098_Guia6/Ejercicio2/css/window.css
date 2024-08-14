@@ -51,7 +51,7 @@ div.translucent {
   -webkit-opacity: .75;
   -o-opacity: .75;
   opacity: .75;
-  filter: alpha(opacity=75);
+  filter: alpha(opacity = 75);
 }
 
 .centrado {

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Controladores de eventos para elementos de formulario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body class="container">
+  <h1 class="text-center">Eventos de controles de formulario</h1>
+
+  <!-- Formulario con todos los tipos de campos de formulario -->
+  <div id="formulario" class="d-flex justify-content-center">
+    <form name="everything" class="bg-light p-3 border rounded w-50">
+      <ul class="inputelements">
+        <li>
+          <input class="form-control" type="text" name="username" placeholder="Usuario" />
+        </li>
+        <li>
+          <input type="password" name="password" placeholder="Contraseña" class="form-control" />
+        </li>
+        <li>
+          <input type="file" name="file" placeholder="Elija un archivo" class="form-control" />
+        </li>
+      </ul>
+
+      <ul class="chkelements">
+        <label for="extras">Periféricos de la computadora:</label>
+        <li>
+          <input type="checkbox" name="extras" value="quemador" class="form-check-input" />
+          <label>Quemador de CD/DVD</label>
+        </li>
+        <li>
+          <input type="checkbox" name="extras" value="impresor" class="form-check-input" />
+          <label>Impresor</label>
+        </li>
+        <li>
+          <input type="checkbox" name="extras" value="parlantes" class="form-check-input" />
+          <label>Parlantes</label>
+        </li>
+        <li>
+          <input type="checkbox" name="extras" value="inalambrica" class="form-check-input" />
+          <label>Tarjeta de red inalámbrica</label>
+        </li>
+        <li>
+          <input type="checkbox" name="extras" value="mouse optico" class="form-check-input" />
+          <label>Mouse óptico</label>
+        </li>
+      </ul>
+
+      <ul class="radelements">
+        <label for="browser">Mi navegador preferido:</label>
+        <li>
+          <input type="radio" name="browser" value="firefox" class="form-check-input">
+          <label>Mozilla Firefox</label>
+        </li>
+        <li>
+          <input type="radio" name="browser" value="iexplorer" class="form-check-input">
+          <label>Internet Explorer</label>
+        </li>
+        <li>
+          <input type="radio" name="browser" value="netscape" class="form-check-input">
+          <label>Maxthon</label>
+        </li>
+        <li>
+          <input type="radio" name="browser" value="opera" class="form-check-input">
+          <label>Opera</label>
+        </li>
+        <li>
+          <input type="radio" name="browser" value="safari" class="form-check-input">
+          <label>Safari</label>
+        </li>
+        <li>
+          <input type="radio" name="browser" value="chrome" class="form-check-input">
+          <label>Chrome</label>
+        </li>
+      </ul>
+
+      <ul class="hobies">
+        <label for="hobbies">Mis pasatiempos:</label>
+        <li>
+          <select name="hobbies" class="form-control" size="6" multiple>
+            <option value="programar" selected="selected">Programar con JavaScript</option>
+            <option value="musica">Escuchar música</option>
+            <option value="cine">Ir al cine</option>
+            <option value="playa">Ir a la playa</option>
+            <option value="leer">Leer obras</option>
+            <option value="surfear">Surfear</option>
+            <option value="bailar">Ir a bailar</option>
+            <option value="viajar">Ir de viaje</option>
+          </select>
+        </li>
+      </ul>
+
+      <ul class="colors">
+        <label for="color">Color favorito:</label>
+        <li>
+          <select name="color" class="form-control">
+            <option value="red" selected="selected">Rojo</option>
+            <option value="blue">Azul</option>
+            <option value="yellow">Amarillo</option>
+            <option value="purple">Morado</option>
+            <option value="orange">Naranja</option>
+            <option value="pink">Rosado</option>
+            <option value="green">Verde</option>
+            <option value="gray">Gris</option>
+            <option value="black">Negro</option>
+            <option value="white">Blanco</option>
+          </select>
+        </li>
+      </ul>
+
+      <ul class="events">
+        <li>
+          <textarea name="textarea" class="form-control h-100" placeholder="Eventos capturados"></textarea>
+        </li>
+      </ul>
+
+      <ul class="buttons">
+        <li>
+          <input type="button" value="Limpiar" class="btn btn-info form-control" name="clearbutton" />
+        </li>
+        <br>
+        <li>
+          <input type="submit" value="Enviar" class="btn btn-info form-control" name="submitbutton" />
+        </li>
+        <br>
+        <li>
+          <input type="reset" value="Restablecer" class="btn btn-info form-control" name="resetbutton" />
+        </li>
+      </ul>
+    </form>
+  </div>
+  <br>
+
+  <!-- Tabla con la descripción de los campos -->
+  <div id="tabla">
+    <table class="table table-dark">
+      <tr>
+        <th colspan="6" class="text-center">Elementos de formulario</th>
+      </tr>
+      <tr>
+        <td>[1]Text</td>
+        <td>[2]Password</td>
+        <td>[3]File</td>
+        <td>[4]Checkbox</td>
+        <td>[5]Radio</td>
+      </tr>
+      <tr>
+        <td>[6]Select list</td>
+        <td>[7]Select menu</td>
+        <td>[8]Textarea</td>
+        <td>[9]Button</td>
+        <td>[10]Submit</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="text-center">[11]Reset</td>
+      </tr>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="js/eventreport.js"></script>
+</body>
+
+</html>

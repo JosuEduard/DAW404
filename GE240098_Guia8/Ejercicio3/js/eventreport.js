@@ -16,21 +16,24 @@ function addHandlers(f) {
   //Recorrer con un lazo todos los controles del formulario 
   for (var i = 0; i < f.elements.length; i++) {
     var e = f.elements[i];
-    e.onclick =  () => { report(this, 'Click'); }
-    e.onchange = () => { report(this, 'Change'); }
-    e.onfocus = () => { report(this, 'Focus'); }
-    e.onblur = () => { report(this, 'Blur'); }
-    e.onselect = () => { report(this, 'Select') }
-  }//Definir algún controlador de evento especial para tres botones 
-  f.clearbutton.onclick = () => {
+    e.onclick = function  () { report(this, 'Click'); }
+    e.onchange = function () { report(this, 'Change'); }
+    e.onfocus = function () { report(this, 'Focus'); }
+    e.onblur = function () { report(this, 'Blur'); }
+    e.onselect = function () { report(this, 'Select') }
+  }
+  
+  //Definir algún controlador de evento especial para tres botones 
+
+  f.clearbutton.onclick = function () {
     this.form.textarea.value = "";
     report(this, 'Click');
   }
-  f.submitbutton.onclick = () => {
+  f.submitbutton.onclick = function () {
     report(this, 'Click');
     return false;
   }
-  f.resetbutton.onclick = () => {
+  f.resetbutton.onclick = function () {
     this.form.reset();
     report(this, 'Click');
     return false;

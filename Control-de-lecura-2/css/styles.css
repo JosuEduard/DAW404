@@ -1,0 +1,140 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  --secondary-color: #1976d2;
+  --background-linear-top:linear-gradient(99deg, rgba(3,3,181,1) 0%, rgba(5,5,177,0.9780505952380952) 51%, rgba(9,44,255,1) 100%);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.top-background{
+  background: var(--background-linear-top);
+  height: 585.5px;
+  width: 110%;
+  position: absolute;
+  z-index: -1;
+  top: -90px;
+  left: -70px;
+  transform: rotate(-7deg);
+}
+
+.header-udb img{
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0;
+}
+
+.centrado{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-title-udb{
+  color: #fff;
+  font-size: 2rem;
+  position: relative;
+  left: -60px;
+}
+.card-layout{
+  justify-content: space-between;
+  display: flex;
+  gap: 70px;
+}
+.card.card-vivienda {
+  cursor: pointer;
+  height: 400px;
+  width: 400px;
+  max-width: 100%;
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.card img{
+  width: 100%;
+  height: 200px;
+}
+
+.card-vivienda:hover{
+  box-shadow: -1px 11px 20px -16px rgba(66, 68, 90, 1);
+}
+
+.card-vivienda.active{
+  border: 5px solid blue;
+}
+
+.number {
+  background: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffd107;
+  box-shadow: 1px 0px 39px -14px rgba(66, 68, 90, 1);
+}
+
+.pasos{
+  display: flex;
+  align-items: center;
+  & .question{
+    padding-left: 20px;
+    font-size: 25px;
+    color: black;
+    margin-bottom: 0;
+  }
+}
+
+.botones{
+  gap: 20px;
+}
+form {
+  width: 100%;
+}
+.input-label {
+  display: block;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+.custom-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #1976d2;
+  border-radius: 50px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  border-color: #333978e4;
+}
+
+
+/* Ranges */
+.slider {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.output {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 10px 0;
+  text-align: center;
+}

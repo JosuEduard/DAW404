@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Crédito Hipotecario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Calculadora de Crédito Hipotecario</h1>
+
+    <label for="precio">Precio de venta:</label>
+    <input type="number" id="precio" value="60000" class="output" oninput="calcular()">
+
+    <label>Prima - Ajusta el porcentaje:</label>
+    <div class="slider-label">
+        <span>0%</span><span>50%</span>
+    </div>
+    <input type="range" min="0" max="50" value="20" id="prima" class="slider" oninput="actualizarPrima()">
+    <div class="output" id="prima-valor">20% ($12,000.00)</div>
+
+    <label>Plazo - Ajusta el tiempo del préstamo:</label>
+    <div class="slider-label">
+        <span>0 años</span><span>30 años</span>
+    </div>
+    <input type="range" min="1" max="30" value="30" id="plazo" class="slider" oninput="actualizarPlazo()">
+    <div class="output" id="plazo-valor">30 años</div>
+
+    <div class="result">
+        <p>Pago mensual: <strong id="pago-mensual">$0.00</strong></p>
+        <p>Interés del mes: <strong id="interes-mes">$0.00</strong></p>
+        <p>Pago al capital: <strong id="pago-capital">$0.00</strong></p>
+        <p>Nuevo saldo: <strong id="nuevo-saldo">$0.00</strong></p>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

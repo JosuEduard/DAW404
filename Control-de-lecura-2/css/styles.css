@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #2E7D32;
+}
+
+.slider {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.slider-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.output {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result p {
+    margin: 5px 0;
+}
+
+.result strong {
+    font-size: 1.2em;
+    color: #2E7D32;
+}

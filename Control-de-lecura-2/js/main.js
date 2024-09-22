@@ -15,9 +15,6 @@ cards.forEach(card => {
 });
 
 
-
-
-
 //Código para los rangos de los inputs
 
 const precioVentaInput = document.getElementById('precio');
@@ -52,7 +49,6 @@ function calcular() {
     const primaPorcentaje = primaInput.value;
     const plazo = plazoInput.value;
 
-
     const primaValor = (precioVenta * primaPorcentaje) / 100;
     const montoPrestamo = precioVenta - primaValor;
 
@@ -76,5 +72,46 @@ function calcular() {
     nuevoSaldoOutput.textContent = `$${saldoPrincipal.toFixed(2)}`;
 }
 
+function imprimirValores() {
+    const precioVenta = parseFloat(precioVentaInput.value);
+    const primaPorcentaje = primaInput.value;
+    const plazo = plazoInput.value;
+    const primaValor = (precioVenta * primaPorcentaje) / 100;
+    const montoPrestamo = precioVenta - primaValor;
+
+    const tasaMensual = tasaInteresAnual / 12;
+    const numeroPagos = plazo * 12;
+    const pagoMensual = (montoPrestamo * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -numeroPagos));
+
+    const interesMes = montoPrestamo * tasaMensual;
+    const pagoCapital = pagoMensual - interesMes;
+
+    // Crear un mensaje con los valores
+    const mensaje = `
+        Precio de Venta: $${precioVenta.toFixed(2)}
+        Prima: ${primaPorcentaje}% ($${primaValor.toFixed(2)})
+        Monto del Préstamo: $${montoPrestamo.toFixed(2)}
+        Plazo: ${plazo} años
+        Pago Mensual: $${pagoMensual.toFixed(2)}
+        Interés Mensual: $${interesMes.toFixed(2)}
+        Pago de Capital: $${pagoCapital.toFixed(2)}
+    `;
+
+    // Este muesta el mensaje en el cuadro de resultados
+    document.getElementById('resultadoTexto').textContent = mensaje;
+    document.getElementById('resultadosCuadro').style.display = 'block'; 
+}
+
+// Este cierra el cuadro
+document.getElementById('cerrarResultados').addEventListener('click', () => {
+    document.getElementById('resultadosCuadro').style.display = 'none';
+});
+
+// este imprime
+
+document.getElementById('imprimirValores').addEventListener('click', imprimirValores);
+
+
+// Inicializar valores
 actualizarPrima();
 actualizarPlazo();

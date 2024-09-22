@@ -92,7 +92,7 @@
     </div>
     <form class="mt-4 w-50">
       <label for="precio" class="input-label">Precio de venta - Puede ser un estimado</label>
-      <input type="number" id="precio" class="custom-input" placeholder="" max="100000" min="0">
+      <input type="number" id="precio" class="custom-input" value="60000" max="100000" min="0" oninput="calcular()">
 
       <label for="interes" class="input-label pt-4">Tasa de interés (tasa fija)</label>
       <input type="text" id="interes" class="custom-input" placeholder="" value="8.25%" disabled>
@@ -100,7 +100,7 @@
       <div class="div-rangos pt-5 mb-5">
         <label class="input-label">Prima - Ajusta el porcentaje que pagarás en efectivo</label>
         <div class="slider-label">
-            <span>0%</span><span>50%</span>
+          <span>0%</span><span>50%</span>
         </div>
         <input type="range" min="0" max="50" value="20" id="prima" class="slider" oninput="actualizarPrima()">
         <div class="output" id="prima-valor">
@@ -110,18 +110,51 @@
       <div class="div-rangos pt-5 mb-5">
         <label class="input-label">Plazo - Ajusta el tiempo que deseas el préstamo</label>
         <div class="slider-label">
-            <span>0 años</span><span>30 años</span>
+          <span>0 años</span><span>30 años</span>
         </div>
         <input type="range" min="1" max="30" value="30" id="plazo" class="slider" oninput="actualizarPlazo()">
         <div class="output" id="plazo-valor">30 años</div>
       </div>
     </form>
+    <button id="imprimirValores" class="btn btn-primary w-50">Ver Cuota</button>
+    <div id="resultadosCuadro" class="results-box">
+      <h4>Resultado de calculo</h4>
+      <div class="content"> 
+        <div class="text-content"> 
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Precio de venta</td>
+                <td id="precio-venta-resultado"></td>
+              </tr>
+            </tbody>
+          </table>
+          <pre id="resultadoTexto"></pre>
+          <button id="cerrarResultados" class="close-button">Cerrar</button>
+        </div>
+        <img id="resultadoImagen" src="img/Nueva.svg"
+          alt="imagen" /> 
+      </div>
+    </div>
 
     <!-- Condiciones -->
     <div class="mt-5 d-flex flex-column align-items-center condiciones">
       <h3>Condiciones</h3>
       <p id="condiciones" class="fw-light lh-lg" style="letter-spacing: 1px;">
-        Tasa de interés nominal anual desde 6.95% para proyectos de vivienda nueva clasificados como proyectos premium, otras clasificaciones aplican a tasa de interés nominal anual desde 7.25%. Consulta con tu asesor de vivienda los proyectos calificados como premium **Cuota calculada de acuerdo al plazo elegido en el formulario, incluye capital e intereses. Crédito sujeto a las siguientes condiciones: para inmuebles de uso habitacional, monto mínimo a financiar para aplicar a crédito $30,000 y monto máximo $500,000.00. Valor mínimo de garantía $40,000 para zonas foráneas, es decir zonas fuera de los departamentos de San Salvador y La libertad, y valor mínimo de garantía de $60,000 para los departamentos de San Salvador y La Libertad. Comisión por estructuración de 1.60%, mínimo de $1,000.00 + IVA hasta máximo de $1,500.00 + IVA. Requiere contratación de seguro de vida y daños. Aprobación de financiamiento sujeta a políticas de créditos vigentes</p>
+        Tasa de interés nominal anual desde 6.95% para proyectos de vivienda nueva clasificados como proyectos premium,
+        otras clasificaciones aplican a tasa de interés nominal anual desde 7.25%. Consulta con tu asesor de vivienda
+        los proyectos calificados como premium **Cuota calculada de acuerdo al plazo elegido en el formulario, incluye
+        capital e intereses. Crédito sujeto a las siguientes condiciones: para inmuebles de uso habitacional, monto
+        mínimo a financiar para aplicar a crédito $30,000 y monto máximo $500,000.00. Valor mínimo de garantía $40,000
+        para zonas foráneas, es decir zonas fuera de los departamentos de San Salvador y La libertad, y valor mínimo de
+        garantía de $60,000 para los departamentos de San Salvador y La Libertad. Comisión por estructuración de 1.60%,
+        mínimo de $1,000.00 + IVA hasta máximo de $1,500.00 + IVA. Requiere contratación de seguro de vida y daños.
+        Aprobación de financiamiento sujeta a políticas de créditos vigentes</p>
     </div>
   </section>
 

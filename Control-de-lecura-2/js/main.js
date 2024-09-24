@@ -1,106 +1,155 @@
+let eventosOcurrido1 = false;
+let eventosOcurrido2 = false;
+let todoCorrecto = false;
+let mensaje;
+//Código para los rangos de los inputs
+const precioVentaInput = document.getElementById('precio');
+const primaInput = document.getElementById('prima');
+const plazoInput = document.getElementById('plazo');
+let plazo = parseFloat(plazoInput.value);
+const interesInput = document.getElementById('interes');
+const interesValorOutPut = document.getElementById('interes-valor');
+const primaValorOutput = document.getElementById('prima-valor');
+const plazoValorOutput = document.getElementById('plazo-valor');
+
+let montoPrestamo;
+let pagoMensual;
+let InteresValor;
+let textoCondiciones = document.getElementById('condiciones');
+
 //Agregando el borde a las cards dependiendo cuál se selecciona
 const cards = document.querySelectorAll('.card-vivienda');
+
 cards.forEach(card => {
-  card.addEventListener('click', () => {
+  card.addEventListener('click', function() {
     cards.forEach(c => c.classList.remove('active'));
     card.classList.add('active');
 
+        document.getElementById('condicion').style.display = 'block';
+        eventosOcurrido1 = true;
+
+        HabilitarForm();
+
     // verificando si la tarjeta activa es la de vivienda usada
     if (card.id === 'viviendaUsada') {
-      let textoCondiciones = document.getElementById('condiciones');
-      textoCondiciones.innerHTML = 
-      "<p>Tasa de interés nominal anual desde 8.25% para compra de vivienda usada. ** Cuota calculada de acuerdo al plazo elegido en el formulario, incluye capital e intereses. Crédito sujeto a las siguientes condiciones: para inmuebles de uso habitacional, monto mínimo a financiar para aplicar a crédito $30,000 y monto máximo $500,000.00. Valor mínimo de garantía $40,000 para zonas foráneas, es decir zonas fuera de los departamentos de San Salvador y La libertad, y valor mínimo de garantía de $60,000 para los departamentos de San Salvador y La Libertad. Comisión por estructuración de 1.60%, mínimo de $1,000.00 + IVA hasta máximo de $1,500.00 + IVA. Requiere contratación de seguro de vida y daños. Aprobación de financiamiento sujeta a políticas de créditos vigentes.</p>";
+        viviendaUsada();
+    } else if (card.id === 'viviendaNueva') { //Verificando si la tarjeta activa es vivienda Nueva
+        viviendaNueva();
     }
   });
 });
 
+//Consideraciones para vivienda Usada
+function viviendaUsada(){
+    textoCondiciones.innerHTML =
+        "<p>Tasa de interés nominal anual desde 8.25% para compra de vivienda usada. Monto mínimo a financiar para aplicar a crédito $30,000 y monto máximo $500,000.00. Si vives en El Salvador, el monto mínimo de prima es del 10% del monton total, si eres extranjero, corresponde al 15%.</p>";
 
-//Código para los rangos de los inputs
-
-const precioVentaInput = document.getElementById('precio');
-const primaInput = document.getElementById('prima');
-const plazoInput = document.getElementById('plazo');
-const primaValorOutput = document.getElementById('prima-valor');
-const plazoValorOutput = document.getElementById('plazo-valor');
-const pagoMensualOutput = document.getElementById('pago-mensual');
-const interesMesOutput = document.getElementById('interes-mes');
-const pagoCapitalOutput = document.getElementById('pago-capital');
-const nuevoSaldoOutput = document.getElementById('nuevo-saldo');
-
-const tasaInteresAnual = 0.0825;
-let saldoPrincipal = 0;
-
-function actualizarPrima() {
-    const precioVenta = parseFloat(precioVentaInput.value);
-    const primaPorcentaje = primaInput.value;
-    const primaValor = (precioVenta * primaPorcentaje) / 100;
-    primaValorOutput.textContent = `${primaPorcentaje}% ($${primaValor.toFixed(2)})`;
-    calcular();
+    document.getElementById('interes').min = '8.25';
+    document.getElementById('minInteres').textContent = '8.25%';
 }
 
-function actualizarPlazo() {
-    const plazo = plazoInput.value;
+//Consideraciones para vivienda Nueva
+function  viviendaNueva(){
+    textoCondiciones.innerHTML =
+        "<p>Tasa de interés nominal anual desde 7.25% para compra de vivienda nueva. Crédito sujeto a la siguiente condición: monto mínimo a financiar para aplicar a crédito $30,000 y monto máximo $500,000.00. Si vives en El Salvador, el monto mínimo de prima es del 10% del monton total, si eres extranjero, corresponde al 15%.</p>";
+
+    document.getElementById('interes').min = '7.25';
+    document.getElementById('minInteres').textContent = '7.25%';
+}
+
+//Agregando el color de seleccionado al boton dependiendo si la persona vive o no en El Salvador
+const buttons = document.querySelectorAll('.btnResidencia');
+buttons.forEach(button => {
+    button.classList.add('btn-secondary');
+    button.addEventListener('click', function(){
+
+        buttons.forEach(b => b.classList.remove('btn-primary', 'btn-secondary'));
+        buttons.forEach(b => b.classList.add('btn-secondary'));
+
+
+        button.classList.remove('btn-secondary');
+        button.classList.add('btn-primary');
+        eventosOcurrido2 = true;
+
+        HabilitarForm();
+
+        if (button.id === 'btnSi') {
+            document.getElementById('prima').min = '10';
+            document.getElementById('minPrima').textContent = '10%';
+        } else if (button.id === 'btnNo') {
+            document.getElementById('prima').min = '15';
+            document.getElementById('minPrima').textContent = '15%';
+        }
+    });
+});
+
+function HabilitarForm(){
+    if (eventosOcurrido1 && eventosOcurrido2) {
+        document.getElementById('formulario').style.display = 'block';
+        interesInput.disabled = true;
+        plazoInput.disabled = true;
+        primaInput.disabled = true;
+    }
+}
+
+precioVentaInput.addEventListener('input', function(){
+    const error = document.getElementById('error');
+    const precioVenta = parseFloat(precioVentaInput.value)
+    if (precioVenta >= 30000 && precioVenta <= 500000){
+        interesInput.disabled = false;
+        plazoInput.disabled = false;
+        primaInput.disabled = false;
+        error.style.display = 'none';
+        todoCorrecto = true;
+    } else {
+        error.style.display = 'block';
+        error.textContent = 'Debe ingresar un monto válida entre $30,000 y $500,000';
+        interesInput.disabled = true;
+        plazoInput.disabled = true;
+        primaInput.disabled = true;
+    }
+})
+
+function actualizarInteres(interes){
+    interesValorOutPut.textContent = `${interes}%`;
+}
+
+function actualizarPrima(primaPorcentaje, primaValor) {
+    primaValorOutput.textContent = `${primaPorcentaje}% ($${primaValor.toFixed(2)})`;
+}
+
+function actualizarPlazo(plazo) {
     plazoValorOutput.textContent = `${plazo} años`;
-    calcular();
 }
 
 function calcular() {
-    const precioVenta = parseFloat(precioVentaInput.value);
-    const primaPorcentaje = primaInput.value;
-    const plazo = plazoInput.value;
-
-    const primaValor = (precioVenta * primaPorcentaje) / 100;
-    const montoPrestamo = precioVenta - primaValor;
-
-    if (saldoPrincipal === 0) {
-        saldoPrincipal = montoPrestamo;
+    let precioVenta;
+    if ((precioVentaInput.value) === '' ) {
+        precioVenta = 0;
+    } else {
+        precioVenta = parseFloat(precioVentaInput.value)  ;
     }
-
-    const tasaMensual = tasaInteresAnual / 12;
-    const numeroPagos = plazo * 12;
-
-    const pagoMensual = (montoPrestamo * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -numeroPagos));
-    pagoMensualOutput.textContent = `$${pagoMensual.toFixed(2)}`;
-
-    const interesMes = saldoPrincipal * tasaMensual;
-    interesMesOutput.textContent = `$${interesMes.toFixed(2)}`;
-
-    const pagoCapital = pagoMensual - interesMes;
-    pagoCapitalOutput.textContent = `$${pagoCapital.toFixed(2)}`;
-
-    saldoPrincipal -= pagoCapital;
-    nuevoSaldoOutput.textContent = `$${saldoPrincipal.toFixed(2)}`;
-}
-
-function imprimirValores() {
-    const precioVenta = parseFloat(precioVentaInput.value);
-    const primaPorcentaje = primaInput.value;
-    const plazo = plazoInput.value;
+    const primaPorcentaje = parseFloat(primaInput.value) ;
+    plazo = parseFloat(plazoInput.value);
+    const interes = parseFloat(interesInput.value);
+    InteresValor = interes / 100;
     const primaValor = (precioVenta * primaPorcentaje) / 100;
-    const montoPrestamo = precioVenta - primaValor;
+    montoPrestamo = precioVenta - primaValor;
+    pagoMensual = (montoPrestamo * (InteresValor/12)) / (1 - Math.pow( 12 / (12 + InteresValor), 12*plazo));
 
-    const tasaMensual = tasaInteresAnual / 12;
-    const numeroPagos = plazo * 12;
-    const pagoMensual = (montoPrestamo * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -numeroPagos));
+    actualizarPlazo(plazo);
+    actualizarPrima(primaPorcentaje, primaValor);
+    actualizarInteres(interes);
 
-    const interesMes = montoPrestamo * tasaMensual;
-    const pagoCapital = pagoMensual - interesMes;
-
-    // Crear un mensaje con los valores
-    const mensaje = `
+        mensaje =`
         Precio de Venta: $${precioVenta.toFixed(2)}
         Prima: ${primaPorcentaje}% ($${primaValor.toFixed(2)})
         Monto del Préstamo: $${montoPrestamo.toFixed(2)}
         Plazo: ${plazo} años
-        Pago Mensual: $${pagoMensual.toFixed(2)}
-        Interés Mensual: $${interesMes.toFixed(2)}
-        Pago de Capital: $${pagoCapital.toFixed(2)}
-    `;
-
-    // Este muesta el mensaje en el cuadro de resultados
-    document.getElementById('resultadoTexto').textContent = mensaje;
-    document.getElementById('resultadosCuadro').style.display = 'block'; 
+        Pago Mensual: $${pagoMensual.toFixed(2)}`;
 }
+
+
 
 // Este cierra el cuadro
 document.getElementById('cerrarResultados').addEventListener('click', () => {
@@ -108,10 +157,88 @@ document.getElementById('cerrarResultados').addEventListener('click', () => {
 });
 
 // este imprime
+document.getElementById('imprimirValores').addEventListener('click', function(){
+    document.getElementById('error2').style.display = 'none';
+    if (todoCorrecto) {
+        document.getElementById('resultadoTexto').textContent = mensaje;
+        document.getElementById('resultadosCuadro').style.display = 'block';
+    } else {
+        document.getElementById('error2').textContent = 'Debe completar correctamente los campos'
+        document.getElementById('error2').style.display = 'block';
+    }
+});
 
-document.getElementById('imprimirValores').addEventListener('click', imprimirValores);
+document.getElementById('generarTabla').addEventListener('click', function(){
+    let totalPagos = 12*plazo;
+    let Saldo = montoPrestamo;
+    let numpago = [];
+    let totales = []
+    let totalInteres = 0;
+    let totalCapital = 0;
+
+    for (let i = 0; i < totalPagos; i++) {
+        let PagoInteres = Saldo * InteresValor /12;
+        let PagoCapital = pagoMensual-PagoInteres;
+        Saldo = Saldo - PagoCapital;
+
+        numpago.push({
+            NumPago: i+1,
+            PagoInteres: '$ ' + PagoInteres.toFixed(2),
+            PagoCapital: '$ ' + PagoCapital.toFixed(2),
+            SaldoRestante: '$' + Saldo.toFixed(2),
+        });
+        totalInteres = totalInteres + PagoInteres;
+        totalCapital = totalCapital + PagoCapital;
+    }
+
+    totales.push({
+        TotalInteres: '$ ' + totalInteres.toFixed(2),
+        TotalCapital: '$ ' + totalCapital.toFixed(2),
+    })
+    agregarTabla(numpago, totales);
+});
+
+function agregarTabla(PagoMensual, Totales) {
+    const sectiontable = document.getElementById('TableSection');
+    const tabla = document.getElementById('tablaAmortizacion').getElementsByTagName('tbody')[0];
+    sectiontable.style.display = 'table';
+    tabla.innerHTML = '';
+    PagoMensual.forEach(fila => {
+        const nuevaFila = tabla.insertRow();
+
+        let Num = nuevaFila.insertCell(0);
+        Num.textContent = fila.NumPago;
+
+        let Interes = nuevaFila.insertCell(1);
+        Interes.textContent = fila.PagoInteres;
+
+        let Capital = nuevaFila.insertCell(2);
+        Capital.textContent = fila.PagoCapital;
+
+        let Restante = nuevaFila.insertCell(3);
+        Restante.textContent = fila.SaldoRestante;
+    });
+
+    Totales.forEach(fila => {
+        const nuevaFila = tabla.insertRow();
+
+        let total = nuevaFila.insertCell(0);
+        total.textContent = 'TOTALES';
+
+        let totalInteres = nuevaFila.insertCell(1);
+        totalInteres.textContent = fila.TotalInteres;
+
+        let totalCapital = nuevaFila.insertCell(2);
+        totalCapital.textContent = fila.TotalCapital;
+    })
 
 
-// Inicializar valores
-actualizarPrima();
-actualizarPlazo();
+
+}
+
+
+
+
+
+
+

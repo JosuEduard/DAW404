@@ -144,16 +144,16 @@ form {
 #resultadosCuadro {
   position: fixed;
   bottom: 20px; 
-  right: 20px; 
-  width: 600px; 
+  right: -900px; 
+  width: 800px; 
   background-color: #ffffff; 
   border: 1px solid #333978e4; 
   padding: 15px; 
-  display: none; 
   z-index: 1000; 
   border-radius: 8px; 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
   font-family: Arial, sans-serif;
+  transition: right 0.5s ease-in;
 }
 
 .content {
@@ -174,9 +174,10 @@ form {
 
 #resultadosCuadro h4 {
   margin: 0; 
+  font-size: 20px;
   padding-bottom: 10px; 
-  border-bottom: 2px solid #333978e4; 
-  color: #333978e4; 
+  border-bottom: 2px solid #1976d2;
+  color: #1976d2;
   text-align: center; 
 }
 
@@ -209,27 +210,8 @@ form {
   white-space: pre-wrap; 
 }
 
-#cerrarResultados {
-  margin-top: 10px; 
-  background-color: #333978e4; 
-  color: white; 
-  border: none; 
-  padding: 10px; 
-  border-radius: 5px; 
-  cursor: pointer; 
-  width: 100%; 
-}
-
-#cerrarResultados:hover {
-  background-color: #333978e4; 
-}
-
 #condicion{
   display: none;
-}
-
-.btnResidencia{
-  background-color: rgba(60, 60, 60, 0.89); !important
 }
 
 .msgError{
@@ -242,7 +224,7 @@ form {
 }
 
 #tablaAmortizacion{
-  font-size: 12px;
+  font-size: 16px;
   width: 80%;
   margin: 0 auto;
   border: gray;
@@ -256,5 +238,15 @@ form {
 #tablaAmortizacion th  {
   background-color: #0505B1F9;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+.table-head{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+input[type=range]{
+  cursor: pointer;
 }

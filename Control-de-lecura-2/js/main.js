@@ -21,26 +21,26 @@ let textoCondiciones = document.getElementById('condiciones');
 const cards = document.querySelectorAll('.card-vivienda');
 
 cards.forEach(card => {
-  card.addEventListener('click', function() {
-    cards.forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
+    card.addEventListener('click', function () {
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
 
         document.getElementById('condicion').style.display = 'block';
         eventosOcurrido1 = true;
 
         HabilitarForm();
 
-    // verificando si la tarjeta activa es la de vivienda usada
-    if (card.id === 'viviendaUsada') {
-        viviendaUsada();
-    } else if (card.id === 'viviendaNueva') { //Verificando si la tarjeta activa es vivienda Nueva
-        viviendaNueva();
-    }
-  });
+        // verificando si la tarjeta activa es la de vivienda usada
+        if (card.id === 'viviendaUsada') {
+            viviendaUsada();
+        } else if (card.id === 'viviendaNueva') { //Verificando si la tarjeta activa es vivienda Nueva
+            viviendaNueva();
+        }
+    });
 });
 
 //Consideraciones para vivienda Usada
-function viviendaUsada(){
+function viviendaUsada() {
     textoCondiciones.innerHTML =
         "<p>Tasa de interés nominal anual desde 8.25% para compra de vivienda usada. Monto mínimo a financiar para aplicar a crédito $30,000 y monto máximo $500,000.00. Si vives en El Salvador, el monto mínimo de prima es del 10% del monton total, si eres extranjero, corresponde al 15%.</p>";
 
@@ -49,7 +49,7 @@ function viviendaUsada(){
 }
 
 //Consideraciones para vivienda Nueva
-function  viviendaNueva(){
+function viviendaNueva() {
     textoCondiciones.innerHTML =
         "<p>Tasa de interés nominal anual desde 7.25% para compra de vivienda nueva. Crédito sujeto a la siguiente condición: monto mínimo a financiar para aplicar a crédito $30,000 y monto máximo $500,000.00. Si vives en El Salvador, el monto mínimo de prima es del 10% del monton total, si eres extranjero, corresponde al 15%.</p>";
 
@@ -61,7 +61,7 @@ function  viviendaNueva(){
 const buttons = document.querySelectorAll('.btnResidencia');
 buttons.forEach(button => {
     button.classList.add('btn-secondary');
-    button.addEventListener('click', function(){
+    button.addEventListener('click', function () {
 
         buttons.forEach(b => b.classList.remove('btn-primary', 'btn-secondary'));
         buttons.forEach(b => b.classList.add('btn-secondary'));
@@ -83,7 +83,7 @@ buttons.forEach(button => {
     });
 });
 
-function HabilitarForm(){
+function HabilitarForm() {
     if (eventosOcurrido1 && eventosOcurrido2) {
         document.getElementById('formulario').style.display = 'block';
         interesInput.disabled = true;
@@ -92,10 +92,10 @@ function HabilitarForm(){
     }
 }
 
-precioVentaInput.addEventListener('input', function(){
+precioVentaInput.addEventListener('input', function () {
     const error = document.getElementById('error');
     const precioVenta = parseFloat(precioVentaInput.value)
-    if (precioVenta >= 30000 && precioVenta <= 500000){
+    if (precioVenta >= 30000 && precioVenta <= 500000) {
         interesInput.disabled = false;
         plazoInput.disabled = false;
         primaInput.disabled = false;
@@ -110,7 +110,7 @@ precioVentaInput.addEventListener('input', function(){
     }
 })
 
-function actualizarInteres(interes){
+function actualizarInteres(interes) {
     interesValorOutPut.textContent = `${interes}%`;
 }
 
@@ -124,24 +124,24 @@ function actualizarPlazo(plazo) {
 
 function calcular() {
     let precioVenta;
-    if ((precioVentaInput.value) === '' ) {
+    if ((precioVentaInput.value) === '') {
         precioVenta = 0;
     } else {
-        precioVenta = parseFloat(precioVentaInput.value)  ;
+        precioVenta = parseFloat(precioVentaInput.value);
     }
-    const primaPorcentaje = parseFloat(primaInput.value) ;
+    const primaPorcentaje = parseFloat(primaInput.value);
     plazo = parseFloat(plazoInput.value);
     const interes = parseFloat(interesInput.value);
     InteresValor = interes / 100;
     const primaValor = (precioVenta * primaPorcentaje) / 100;
     montoPrestamo = precioVenta - primaValor;
-    pagoMensual = (montoPrestamo * (InteresValor/12)) / (1 - Math.pow( 12 / (12 + InteresValor), 12*plazo));
+    pagoMensual = (montoPrestamo * (InteresValor / 12)) / (1 - Math.pow(12 / (12 + InteresValor), 12 * plazo));
 
     actualizarPlazo(plazo);
     actualizarPrima(primaPorcentaje, primaValor);
     actualizarInteres(interes);
 
-        mensaje =`
+    mensaje = `
         Precio de Venta: $${precioVenta.toFixed(2)}
         Prima: ${primaPorcentaje}% ($${primaValor.toFixed(2)})
         Monto del Préstamo: $${montoPrestamo.toFixed(2)}
@@ -153,36 +153,36 @@ function calcular() {
 
 // Este cierra el cuadro
 document.getElementById('cerrarResultados').addEventListener('click', () => {
-    document.getElementById('resultadosCuadro').style.display = 'none';
+    document.getElementById('resultadosCuadro').style.right = '-900px';
 });
 
 // este imprime
-document.getElementById('imprimirValores').addEventListener('click', function(){
+document.getElementById('imprimirValores').addEventListener('click', function () {
     document.getElementById('error2').style.display = 'none';
     if (todoCorrecto) {
         document.getElementById('resultadoTexto').textContent = mensaje;
-        document.getElementById('resultadosCuadro').style.display = 'block';
+        document.getElementById('resultadosCuadro').style.right = '20px';
     } else {
         document.getElementById('error2').textContent = 'Debe completar correctamente los campos'
         document.getElementById('error2').style.display = 'block';
     }
 });
 
-document.getElementById('generarTabla').addEventListener('click', function(){
-    let totalPagos = 12*plazo;
+document.getElementById('generarTabla').addEventListener('click', function () {
+    let totalPagos = 12 * plazo;
     let Saldo = montoPrestamo;
     let numpago = [];
-    let totales = []
+    let totales = [];
     let totalInteres = 0;
     let totalCapital = 0;
 
     for (let i = 0; i < totalPagos; i++) {
-        let PagoInteres = Saldo * InteresValor /12;
-        let PagoCapital = pagoMensual-PagoInteres;
+        let PagoInteres = Saldo * InteresValor / 12;
+        let PagoCapital = pagoMensual - PagoInteres;
         Saldo = Saldo - PagoCapital;
 
         numpago.push({
-            NumPago: i+1,
+            NumPago: i + 1,
             PagoInteres: '$ ' + PagoInteres.toFixed(2),
             PagoCapital: '$ ' + PagoCapital.toFixed(2),
             SaldoRestante: '$' + Saldo.toFixed(2),
@@ -230,6 +230,9 @@ function agregarTabla(PagoMensual, Totales) {
 
         let totalCapital = nuevaFila.insertCell(2);
         totalCapital.textContent = fila.TotalCapital;
+
+        let Restante = nuevaFila.insertCell(3);
+        Restante.textContent = '🏠';
     })
 
 

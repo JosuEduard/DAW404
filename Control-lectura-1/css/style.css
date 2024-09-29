@@ -1,0 +1,98 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    height: 100vh;
+    background-color: rgb(51, 51, 51);
+    align-items: center;
+    display: grid;
+    justify-items: center;
+}
+
+#centro{
+    width: 400px;
+    display: grid;
+    gap: 20px;
+    background-color: rgb(46, 46, 46);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 10px 10px 90px rgb(22, 22, 22);
+}
+
+h1{
+    text-align: center;
+    color: rgb(233, 143, 59);
+}
+
+.input{
+    display: grid;
+}
+
+.deducciones{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.center{
+    display: flex;
+}
+#calcular, #limpiar{
+    width: 100px;
+    margin: 0 auto;
+    color: white;
+    font-weight: 600;
+    background-color:  rgb(190, 104, 24);
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+p{
+    font-size: 15px;
+    color: rgb(255, 164, 90);
+    text-align: justify;
+    padding: 10px;
+}
+#calcular:hover, #limpiar:hover{
+    background-color:  rgb(97, 47, 0);
+    outline: 1px solid white;
+    box-shadow: 0.5px 0.5px 10px white;
+}
+
+#calcular:active, #limpiar:active{
+    background-color:  rgb(110, 71, 33);
+}
+
+label{
+    font-size: 20px;
+    color:white;
+    margin: 10px;
+}
+
+input{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+    color: white;
+    background-color: rgb(104, 104, 104);
+}
+
+input::placeholder{
+    color: rgb(207, 207, 207);
+}
+
+input:focus{
+    outline: 1px solid white;
+    box-shadow: 0.5px 0.5px 10px white;
+}
+
+footer > p{
+    text-align: center;
+    font-weight: 500;
+}

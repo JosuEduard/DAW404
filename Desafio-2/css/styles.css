@@ -1,0 +1,99 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Tahoma;
+}
+.footerPage{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+  padding-block: 10px;
+  background-color: rgb(9.8% 46% 82%);
+}
+
+.redondear{
+  border-radius: 20px;
+}
+
+.redondear .img-integrantes{
+  width: 270px;
+  height: 350px;
+}
+.socialNetworks img{
+  width: 2rem;
+  margin-left: 15px;
+  transform: scale(1);
+  transition: transform 0.5s;
+}
+.socialNetworks img:hover{
+  transform:scale(1.5);
+}
+
+.headerPage{
+  width: 100%;
+  display: flex;
+  background-color: rgb(9.8% 46% 82%);
+  gap: 40px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.headerPage img{
+  width: 100px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  flex: 1; /* Hace que todas las tarjetas tengan el mismo alto */
+}
+
+#visor{
+  width: 90%;
+  aspect-ratio: 17/6 ;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: inset 100px 0 50px 0px rgba(0, 0, 0, 0.5),
+              inset -100px 0 100px 0px rgba(0, 0, 0, 0.5);
+}
+
+#visor > img, #visor video{
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.flechas-visor{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flechas-visor > div{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 20%;
+  align-items: center;
+}
+
+.flechas-visor img{
+  height: 50px;
+  cursor: pointer;
+}

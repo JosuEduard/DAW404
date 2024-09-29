@@ -1,0 +1,17 @@
+.card img{
+  height: 250px;
+  max-height: 275px;
+  min-height: 200px;
+}
+.imagen-carreras{
+  width: 50%;
+  display: block;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+ul{
+  line-height: 2rem;
+}
+p{
+  line-height: 1.9rem;
+}

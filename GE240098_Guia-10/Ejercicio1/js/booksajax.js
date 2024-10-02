@@ -6,8 +6,6 @@
 let solicitudAsinc;
 
 function registrarManejadores() {
-
-
   //Mostrar y eliminar el nombre del libro del primer ID 
 
   const imgCss = document.getElementById('csstecprof');
